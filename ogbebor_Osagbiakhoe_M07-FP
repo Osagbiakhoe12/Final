@@ -1,0 +1,40 @@
+# Name of the submission: Trainers/enrollees
+# Author of the submission: [Osagbiakhoe Ogbebor]
+# Summary/goal of the submission: This program allows the manager of Wally's Training Gym to track and categorize trainers based on the number of new members they have enrolled.
+
+# Initialize arrays to store trainer names and their corresponding enrollments
+trainer_names = []
+enrollments = []
+
+# Define constants for enrollment categories
+CATEGORY_1 = (0, 5)
+CATEGORY_2 = (6, 10)
+CATEGORY_3 = (11, 15)
+
+# Initialize counters for each category
+count_category_1 = 0
+count_category_2 = 0
+count_category_3 = 0
+
+# Prompt the user to enter trainer names and enrollments
+for i in range(15):  # You can change the number of trainers as needed
+    trainer_name = input(f"Enter the last name of Trainer {i + 1}: ")
+    new_enrollments = int(input(f"Enter the number of new enrollments for {trainer_name}: "))
+    
+    # Append trainer name and enrollments to the respective arrays
+    trainer_names.append(trainer_name)
+    enrollments.append(new_enrollments)
+    
+    # Categorize trainers based on their enrollments
+    if CATEGORY_1[0] <= new_enrollments <= CATEGORY_1[1]:
+        count_category_1 += 1
+    elif CATEGORY_2[0] <= new_enrollments <= CATEGORY_2[1]:
+        count_category_2 += 1
+    elif CATEGORY_3[0] <= new_enrollments <= CATEGORY_3[1]:
+        count_category_3 += 1
+
+# Display the results
+print("\nTrainers categorized by the number of new enrollments:")
+print(f"0-5 Enrollments: {count_category_1} trainers")
+print(f"6-10 Enrollments: {count_category_2} trainers")
+print(f"11-15 Enrollments: {count_category_3} trainers")
