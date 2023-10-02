@@ -38,3 +38,4 @@ print("\nTrainers categorized by the number of new enrollments:")
 print(f"0-5 Enrollments: {count_category_1} trainers")
 print(f"6-10 Enrollments: {count_category_2} trainers")
 print(f"11-15 Enrollments: {count_category_3} trainers")
+
