@@ -1,0 +1,65 @@
+# Submission: FINAL_EXAM_PART2
+# Author: Osagbiakhoe Ogbebor
+# Goal: To input a list of employee names and salaries, calculate various statistics, and display the results.
+# Variables:
+# - employee_names (list): Stores the names of employees.
+# - employee_salaries (list): Stores the salaries of employees.
+# - total_salary (float): Accumulates the total salary of all employees.
+# - highest_salary (float): Stores the highest salary found.
+# - lowest_salary (float): Stores the lowest salary found.
+# - average_salary (float): Stores the average salary.
+# - count (int): Keeps track of the number of employees.
+# - sentinel (str): The sentinel value used to end input.
+
+# Initialize lists to store employee names and salaries
+employee_names = []
+employee_salaries = []
+
+# Initialize variables for calculations
+total_salary = 0.0
+highest_salary = float('-inf')  # Initialize with negative infinity for comparison
+lowest_salary = float('inf')    # Initialize with positive infinity for comparison
+average_salary = 0.0
+count = 0
+
+# Define the sentinel value to end input
+sentinel = "done"
+
+# Input loop to collect employee names and salaries
+while True:
+    name = input("Enter employee name (or 'done' to finish): ")
+    
+    if name.lower() == sentinel:
+        break
+    
+    salary = float(input("Enter employee salary (in even hundreds): "))
+    
+    # Add the name and salary to the respective lists
+    employee_names.append(name)
+    employee_salaries.append(salary)
+    
+    # Update total salary and check for highest/lowest salaries
+    total_salary += salary
+    highest_salary = max(highest_salary, salary)
+    lowest_salary = min(lowest_salary, salary)
+    count += 1
+
+# Calculate the average salary
+average_salary = total_salary / count if count > 0 else 0.0
+
+# Display employee names and salaries
+print("\nEmployee Names and Salaries:")
+for i in range(count):
+    print(f"{employee_names[i]}: ${employee_salaries[i]:,.2f}")
+
+# Display average, highest, and lowest salaries
+print("\nStatistics:")
+print(f"Average Salary: ${average_salary:,.2f}")
+print(f"Highest Salary: ${highest_salary:,.2f}")
+print(f"Lowest Salary: ${lowest_salary:,.2f}")
+
+# Display employees within a $5,000 range of the average salary
+print("\nEmployees within $5,000 range of the average:")
+for i in range(count):
+    if abs(employee_salaries[i] - average_salary) <= 5000:
+        print(f"{employee_names[i]}: ${employee_salaries[i]:,.2f}")
